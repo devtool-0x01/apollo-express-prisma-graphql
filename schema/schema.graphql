@@ -1,0 +1,51 @@
+type Query {
+  countries: [Country]
+  country(code: String!): Country
+  manufacturers: [Manufacturer!]!
+  manufacturer(id: Int!): Manufacturer
+  vehicles: [Vehicle]
+  vehicle(id: Int!): Vehicle
+}
+
+# This "Manufacturer" type defines a Vehicle Manufacturers Object
+type Manufacturer {
+  id: Int!
+  name: String!
+  description: String
+  country: Country
+  vehicles: [Vehicle]
+}
+
+type VehicleModel {
+  id: Int!
+  name: String!
+  year: Int
+}
+
+# Represents a Vehicle/Automobile Object
+type Vehicle {
+  id: Int!
+  name: String!
+  models: [VehicleModel]
+  year: Int
+  engineType: String #EngineType
+  engineSize: Int
+  manufacturer: Manufacturer
+}
+
+type Country {
+  name: String!
+  countryCode: String!
+  manufacturers: [Manufacturer]
+}
+
+# enum EngineType {
+#   FourCyclinder
+#   Straight6
+#   V6
+#   V8
+#   V10
+#   V12
+#   V16
+#   W16
+# }
