@@ -1,2 +1,5 @@
 node_modules
 .env
+seed-data
+prisma/dev.db
+prisma/seed-db.js

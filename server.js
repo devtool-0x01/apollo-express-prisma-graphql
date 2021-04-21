@@ -4,9 +4,17 @@ const { ApolloServer, gql } = require("apollo-server-express");
 // const { Manufacturers, Vehicles } = require("./dummydata");
 const { PrismaClient } = require("@prisma/client");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const app = express();
 const db = new PrismaClient();
+
+const test = () =>
+  db.manufacturer.findMany({
+    include: {
+      country: true,
+      Vehicles: true,
+    },
+  });
 
 const schema = fs.readFileSync("./schema/schema.graphql", { encoding: "utf8" });
 const typeDefs = gql(schema);
@@ -51,12 +59,13 @@ const server = new ApolloServer({
       },
     },
   ],
+  // playground: false,
 });
 
 server.applyMiddleware({ app, path: "/graphql" });
 
 app.disable("x-powered-by");
-app.use("/", (req, res, next) => {
+app.use("/", (_req, res, _next) => {
   res.end();
 });
 

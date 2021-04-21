@@ -5,7 +5,19 @@ const Query = {
         id: args.id,
       },
     }),
-  manufacturers: (parent, args, { db }) => db.manufacturer.findMany(),
+  brand: (parent, args, { db }) =>
+    db.manufacturer.findFirst({
+      where: {
+        name: args.name,
+      },
+    }),
+  manufacturers: (parent, args, { db }) =>
+    db.manufacturer.findMany({
+      include: {
+        country: true,
+        // vehicles: true,
+      },
+    }),
   vehicles: (parent, args, { db }) => db.vehicle.findMany(),
   vehicle: (parent, args, { db }) =>
     db.vehicle.findFirst({

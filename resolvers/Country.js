@@ -1,5 +1,5 @@
 const Country = {
-  manufacturers: (p, a, { db }) =>
+  manufacturers: (_parent, _args, { db }) =>
     db.manufacturer.findMany({
       where: {
         countryId: p.id,

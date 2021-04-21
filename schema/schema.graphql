@@ -1,13 +1,31 @@
 type Query {
   countries: [Country]
   country(code: String!): Country
+  """
+  Get a list of manufacturers
+  """
   manufacturers: [Manufacturer!]!
+  """
+  Get a single manufacturer
+  """
   manufacturer(id: Int!): Manufacturer
+  """
+  Get a list of vehicles
+  """
   vehicles: [Vehicle]
+  """
+  Get a single vehicle by Id
+  """
   vehicle(id: Int!): Vehicle
+  """
+  Get a manufacturer by brand name
+  """
+  brand(name: String!): Manufacturer
 }
 
-# This "Manufacturer" type defines a Vehicle Manufacturers Object
+"""
+This "Manufacturer" type defines a Vehicle Manufacturers Object
+"""
 type Manufacturer {
   id: Int!
   name: String!
@@ -16,18 +34,25 @@ type Manufacturer {
   vehicles: [Vehicle]
 }
 
+"""
+ Represents a vehicle model
+"""
 type VehicleModel {
   id: Int!
   name: String!
   year: Int
+  description: String
 }
 
-# Represents a Vehicle/Automobile Object
+"""
+ Represents a Vehicle/Automobile Object
+"""
 type Vehicle {
   id: Int!
   name: String!
   models: [VehicleModel]
   year: Int
+  description: String
   engineType: String #EngineType
   engineSize: Int
   manufacturer: Manufacturer
@@ -38,6 +63,9 @@ type Country {
   countryCode: String!
   manufacturers: [Manufacturer]
 }
+# type Featured {
+
+# }
 
 # enum EngineType {
 #   FourCyclinder
