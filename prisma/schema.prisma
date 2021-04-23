@@ -48,7 +48,7 @@ model Vehicle {
   description    String?
   engineType     String?
   engineSize     Int?
-  manufacturers  Manufacturer   @relation(references: [id], fields: [manufacturerId])
+  manufacturer   Manufacturer   @relation(references: [id], fields: [manufacturerId])
   manufacturerId Int
   vehicleModel   VehicleModel[]
 }

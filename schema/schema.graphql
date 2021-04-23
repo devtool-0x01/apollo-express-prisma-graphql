@@ -35,7 +35,7 @@ type Manufacturer {
 }
 
 """
- Represents a vehicle model
+Represents a vehicle model
 """
 type VehicleModel {
   id: Int!
@@ -45,7 +45,7 @@ type VehicleModel {
 }
 
 """
- Represents a Vehicle/Automobile Object
+Represents a Vehicle/Automobile Object
 """
 type Vehicle {
   id: Int!
@@ -63,17 +63,14 @@ type Country {
   countryCode: String!
   manufacturers: [Manufacturer]
 }
-# type Featured {
 
-# }
-
-# enum EngineType {
-#   FourCyclinder
-#   Straight6
-#   V6
-#   V8
-#   V10
-#   V12
-#   V16
-#   W16
-# }
+enum EngineType {
+  Unknown
+  FourCyclinder
+  Straight6
+  V6
+  V8
+  V10
+  V12
+  W16
+}
